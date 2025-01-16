@@ -1,11 +1,13 @@
 import { useContext } from "react";
 import DataContext from "../context/RecipeContext";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 const RecipeList = () => {
   const { recipes, setRecipes } = useContext(DataContext);
   // Handle delete action
   const handleDelete = (id) => {
-    setRecipes((prevRecipes) => prevRecipes.filter((recipe) => recipe.id !== id));
+    setRecipes((prevRecipes) =>
+      prevRecipes.filter((recipe) => recipe.id !== id)
+    );
   };
 
   // Render recipe rows
@@ -30,7 +32,9 @@ const RecipeList = () => {
   // Return the table
   return recipes.length > 0 ? (
     <table>
-      <caption><h3>Recipe List</h3></caption>
+      <caption>
+        <h3>Recipe List</h3>
+      </caption>
       <Link to="/add-recipe">
         <button>add recipe</button>
       </Link>
