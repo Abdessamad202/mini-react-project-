@@ -28,7 +28,11 @@ const RecipeForm = ({ id = null }) => {
     e.preventDefault();
 
     const newRecipe = {
-      id: id ? Number(id) : recipes.length > 0 ? Math.max(...recipes.map(r => r.id)) + 1 : 1,
+      id: id
+        ? Number(id)
+        : recipes.length > 0
+          ? recipes[recipes.length - 1].id + 1
+          : 1,
       title,
       description,
     };
@@ -64,9 +68,7 @@ const RecipeForm = ({ id = null }) => {
         value={description}
         onChange={(e) => setDescription(e.target.value)}
       />
-      <button type="submit">
-        {id ? "Update Recipe" : "Add Recipe"}
-      </button>
+      <button type="submit">{id ? "Update Recipe" : "Add Recipe"}</button>
     </form>
   );
 };
